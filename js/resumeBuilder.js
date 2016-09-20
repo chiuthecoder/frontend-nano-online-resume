@@ -9,6 +9,8 @@ $(document).click(function(loc){
 	console.log(loc.pageX, loc.pageY);
 });
 
+var formattedText;
+
 var bio = {
 	"name": "Chiuhua Chen",
 	"role": "Frontend Developer",
@@ -26,28 +28,28 @@ var bio = {
 	],
 	"display": function(){
 		if (bio.skills.length > 0){
-			var formattedText = HTMLheaderName.replace("%data%", bio.name);
+			formattedText = HTMLheaderName.replace("%data%", bio.name);
 			$("#header").prepend(formattedText);
-			var formattedText = HTMLheaderRole.replace("%data%", bio.role);
+			formattedText = HTMLheaderRole.replace("%data%", bio.role);
 			$("h1").after(formattedText);
-			var formattedText = HTMLmobile.replace("%data%", bio.contacts.mobile);
+			formattedText = HTMLmobile.replace("%data%", bio.contacts.mobile);
 			$("#topContacts").append(formattedText);
-			var formattedText = HTMLemail.replace("%data%", bio.contacts.email);
+			formattedText = HTMLemail.replace("%data%", bio.contacts.email);
 			$("#topContacts").append(formattedText);
-			var formattedText = HTMLtwitter.replace("%data%", bio.contacts.twitter);
+			formattedText = HTMLtwitter.replace("%data%", bio.contacts.twitter);
 			$("#topContacts").append(formattedText);
-			var formattedText = HTMLgithub.replace("%data%", bio.contacts.github);
+			formattedText = HTMLgithub.replace("%data%", bio.contacts.github);
 			$("#topContacts").append(formattedText);
-			var formattedText = HTMLlocation.replace("%data%", bio.contacts.location);
+			formattedText = HTMLlocation.replace("%data%", bio.contacts.location);
 			$("#topContacts").append(formattedText);
-			var formattedText = HTMLbioPic.replace("%data%", bio.biopic);
+			formattedText = HTMLbioPic.replace("%data%", bio.biopic);
 			$("#header").append(formattedText);
-			var formattedText = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
+			formattedText = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
 			$("#header").append(formattedText);
 			$("#header").append(HTMLskillsStart);
 			//loop for bio.skills array
 			for(var i=0; i<bio.skills.length; i++){
-				var formattedText = HTMLskills .replace("%data%", bio.skills[i]);
+				formattedText = HTMLskills .replace("%data%", bio.skills[i]);
 				$("#skills").append(formattedText);
 			}
 		}		
@@ -93,11 +95,11 @@ var work = {
 			for(var i=0; i < work.jobs.length; i++){
 				// console.log("hello, i="+i+work.jobs[i].title);
 				$("#workExperience").append(HTMLworkStart);
-				var formattedText = HTMLworkEmployer.replace("%data%", work.jobs[i].employer)+HTMLworkTitle.replace("%data%", work.jobs[i].title);
+				formattedText = HTMLworkEmployer.replace("%data%", work.jobs[i].employer)+HTMLworkTitle.replace("%data%", work.jobs[i].title);
 				$(".work-entry:last").append(formattedText);
-				var formattedText = HTMLworkDates.replace("%data%", work.jobs[i].dates);
+				formattedText = HTMLworkDates.replace("%data%", work.jobs[i].dates);
 				$(".work-entry:last").append(formattedText);
-				var formattedText = HTMLworkDescription.replace("%data%", work.jobs[i].description);
+				formattedText = HTMLworkDescription.replace("%data%", work.jobs[i].description);
 				$(".work-entry:last").append(formattedText);
 			}
 		}	
@@ -105,6 +107,64 @@ var work = {
 };
 
 work.display();
+
+
+var projects ={
+	"projects":[
+		{
+			"title": "Meal Ideas",
+			"dates": 2016,
+			"description": "The app provides three meal ideas for the users base on their favors. Great nutritions and delicious foods.",
+			"images": [
+				"http://placehold.it/350x150",
+				"http://placehold.it/350x150"
+			],
+			"technology": "HTML5, CSS3, JS, jQuery",
+			"URL": "http://chiuthecoder.github.com/mealideas"
+		},
+			{
+			"title": "Tech Talk",
+			"dates": 2015,
+			"description": "The app provides upcoming tech talks events.",
+			"images": [
+				"http://placehold.it/350x150",
+				"http://placehold.it/350x150"
+			],
+			"technology": "HTML5, CSS3, JS, jQuery, Ruby on Rail",
+			"URL": "http://chiuthecoder.github.com/techtalk"
+		},
+			{
+			"title": "Doctor's Appointment",
+			"dates": 2015,
+			"description": "The app tracks user's doctor appoinments.",
+			"images": [
+				"http://placehold.it/350x150",
+				"http://placehold.it/350x150"
+			],
+			"technology": "HTML5, CSS3, JS, jQuery, Angular, NodeJS, MogoDB",
+			"URL": "http://chiuthecoder.github.com/docapp"
+		}
+	],
+	"display": function(){
+		if(projects.projects.length > 0){
+			// console.log("working");
+			for(var i = 0; i < projects.projects.length ; i++){
+				$("#projects").append(HTMLprojectStart);
+				formattedText = HTMLprojectTitle.replace("%data%", projects.projects[i].title);
+				$(".project-entry:last").append(formattedText);
+				formattedText = HTMLprojectDates.replace("%data%", projects.projects[i].dates);
+				$(".project-entry:last").append(formattedText);
+				formattedText = HTMLprojectDescription.replace("%data%", projects.projects[i].description);
+				$(".project-entry:last").append(formattedText);
+				for(var j = 0; j < projects.projects[i].images.length; j++){
+					formattedText = HTMLprojectImage.replace("%data%", projects.projects[i].images[j]);
+					$(".project-entry:last").append(formattedText);
+				}
+			}	
+		}
+	}
+};
+projects.display();
 
 var education ={
 	"schools":[
@@ -127,51 +187,43 @@ var education ={
 		{
 			"title": "Javascript Crash Course",
 			"school": "Udacity",
-			"dates": 2016,
+			"dates": "2016",
 			"url": "http://www.udacity.com/course/cs50"
 		}
-	]
-};
-
-
-
-var projects ={
-	"projects":[
-		{
-			"title": "Meal Ideas",
-			"dates": 2016,
-			"description": "xxxxxxx",
-			"images": [
-				"http://placehold.it/350x150",
-				"http://placehold.it/350x150"
-			],
-			"technology": "HTML5, CSS3, JS, jQuery",
-			"URL": "http://chiuthecoder.github.com/mealideas"
-		},
-			{
-			"title": "Tech Talk",
-			"dates": 2015,
-			"description": "xxxxxxx",
-			"images": [
-				"http://placehold.it/350x150",
-				"http://placehold.it/350x150"
-			],
-			"technology": "HTML5, CSS3, JS, jQuery, Ruby on Rail",
-			"URL": "http://chiuthecoder.github.com/techtalk"
-		},
-			{
-			"title": "Doctor's Appointment",
-			"dates": 2015,
-			"description": "xxxxxxx",
-			"images": [
-				"http://placehold.it/350x150",
-				"http://placehold.it/350x150"
-			],
-			"technology": "HTML5, CSS3, JS, jQuery, Angular, NodeJS, MogoDB",
-			"URL": "http://chiuthecoder.github.com/docapp"
+	],
+	"displaySchools": function(){
+		if(education.schools.length > 0){
+			// console.log("working");
+			$("#education").append(HTMLschoolStart);
+			for(var i=0; i < education.schools.length; i++){
+				formattedText = HTMLschoolName.replace("%data%", education.schools[i].name) + HTMLschoolDegree.replace("%data%", education.schools[i].degree);
+				$(".education-entry:last").append(formattedText);
+				formattedText = HTMLschoolDates.replace("%data%", education.schools[i].dates);
+				$(".education-entry:last").append(formattedText);
+				formattedText = HTMLschoolMajor.replace("%data%", education.schools[i].majors);
+				$(".education-entry:last").append(formattedText);
+			}
 		}
-	]
+	},
+	"displayOnlineCourses": function(){
+		if(education.onlineCourses.length >0){
+			// console.log("working");
+			$("#education").append(HTMLonlineClasses);
+			$("#education").append(HTMLschoolStart);
+			for(var i = 0; i < education.onlineCourses.length; i++){
+				formattedText = HTMLonlineTitle.replace("%data%", education.onlineCourses[i].title) + HTMLonlineSchool.replace("%data%", education.onlineCourses[i].school);
+				$(".education-entry:last").append(formattedText);
+				formattedText = HTMLonlineDates.replace("%data%", education.onlineCourses[i].dates);
+				$(".education-entry:last").append(formattedText);
+				formattedText = HTMLonlineURL.replace("%data%", education.onlineCourses[i].url);
+				$(".education-entry:last").append(formattedText);
+			}
+		}		
+	}
 };
+
+education.displaySchools();
+education.displayOnlineCourses();
 
 
 
