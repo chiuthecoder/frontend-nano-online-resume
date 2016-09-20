@@ -95,13 +95,13 @@ if (work.jobs.length > 0){
 	// console.log("working!!");
 	for(var i=0; i < work.jobs.length; i++){
 		console.log("hello, i="+i+work.jobs[i].title);
-		$("#workExperience").after(HTMLworkStart);
+		$("#workExperience").append(HTMLworkStart);
 		var formattedWorkTitle = HTMLworkEmployer.replace("%data%", work.jobs[i].employer)+HTMLworkTitle.replace("%data%", work.jobs[i].title);
-		$(".work-entry").append(formattedWorkTitle);
+		$(".work-entry:last").append(formattedWorkTitle);
 		var formattedWorkDate = HTMLworkDates.replace("%data%", work.jobs[i].dates);
-		$(".work-entry").append(formattedWorkDate);
+		$(".work-entry:last").append(formattedWorkDate);
 		var formattedDes = HTMLworkDescription.replace("%data%", work.jobs[i].description);
-		$(".work-entry").append(formattedDes);
+		$(".work-entry:last").append(formattedDes);
 	}
 }
 
