@@ -1,13 +1,13 @@
-var countries =
-["Germany", "US", "Argentina", "Brazil", "Netherland"];
+// var countries =
+// ["Germany", "US", "Argentina", "Brazil", "Netherland"];
 
-for(country in countries){
-	console.log("This is country: " + countries[country]);
-}
+// for(country in countries){
+// 	console.log("This is country: " + countries[country]);
+// }
 
-$(document).click(function(loc){
-	console.log(loc.pageX, loc.pageY);
-});
+// $(document).click(function(loc){
+// 	console.log(loc.pageX, loc.pageY);
+// });
 
 var formattedText;
 
@@ -54,7 +54,7 @@ var bio = {
 			}
 		}		
 	}
-} 
+}; 
 
 bio.display();
 
